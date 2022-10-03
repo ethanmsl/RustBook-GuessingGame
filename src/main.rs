@@ -6,8 +6,8 @@ fn main() {
     println!("Guess the number!");
 
     let secret_number = rand::thread_rng().gen_range(1..=100);
-
     // println!("The secret number is: {secret_number}");
+    // ^ diagnostic print
 
     println!("Please input your guess.");
 
@@ -24,6 +24,7 @@ fn main() {
         }
 
         // let guess: u32 = guess.trim().parse().expect("Please type a number!");
+        // ^ alternate way of dealing with the (ok|Err) enum from .parse()
         let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
             Err(_) => {
@@ -50,5 +51,5 @@ fn main() {
     let b = "loo";
     println!("First var: {a}, second var: {b}");
     println!("First var: {}, second var: {}", a, b);
-    */
+    */// ^5 checking different ways of embedding variable values in strings
 }
